@@ -13,9 +13,9 @@ class UnsupportedURLError(Exception):
 
 def tinyurl_process(path):
     hosted_url = requests.get(f"http://tinyurl.com/{path}")
-    soup = BeautifulSoup(hosted_url.text, "html.parser")
-    extraction = soup.find(rel="canonical")
-    return extraction['href']
+    soup = BeautifulSoup(hosted_url.history[0].text,"html.parser")
+    return soup.a["href"]
+
 
 
 def bitly_process(path):
@@ -47,11 +47,11 @@ def url_resolver(inp):
             print(f"Your service is {web_name}, what is your extension?")
             web_path = input(f"{web_name}/")
             if web_path != "":
-                x(web_path)
+                return x(web_path)
             else:
                 raise URLParsingError(f"The input is impossible to parse, please try again")
         else:
-            x(web_path)
+
+            return x(web_path)
     else:
         raise UnsupportedURLError(f"We are not compatible with {web_name}")
-
