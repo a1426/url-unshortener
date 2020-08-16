@@ -12,10 +12,9 @@ class UnsupportedURLError(Exception):
 
 
 def tinyurl_process(path):
-    hosted_url = requests.get(f"http://tinyurl.com/{path}")
-    soup = BeautifulSoup(hosted_url.history[0].text,"html.parser")
-    return soup.a["href"]
-
+    hosted_url = requests.get(f"https://preview.tinyurl.com/{path}")
+    soup = BeautifulSoup(hosted_url.text, "html.parser")
+    return soup.find(id="redirecturl")['href']
 
 
 def bitly_process(path):
