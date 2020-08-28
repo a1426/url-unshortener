@@ -7,5 +7,5 @@ Bitly - bit.ly
 Rebrandly - rb.gy 
 
 TODO:
-Add more compatible websites.
+Add more compatible websites.  
 Make the unshortening process simpler.
