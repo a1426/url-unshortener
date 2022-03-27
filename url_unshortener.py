@@ -42,7 +42,7 @@ def url_resolver(inp):
     web_path = match.group(3)
     x = supported_sites.get(web_name, 0)
     if x:
-        if match.group(2) == '':
+        if web_path == '':
             print(f"Your service is {web_name}, what is your extension?")
             web_path = input(f"{web_name}/")
             if web_path != "":
